@@ -2,7 +2,9 @@ package Testes;
 
 import static org.junit.Assert.*;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
 import java.io.PrintStream;
 
 import org.junit.Test;
@@ -22,6 +24,20 @@ public class Teste_Principal {
 		vc.vulnerableMethod(FILENAME);
 		
 		assertEquals("O nome do arquivo contem caracteres problematicos, por favor, mude o nome.",outContent.toString() );
+		
+		
+	}
+	
+	@Test
+	public void ImputDoOperadorIncorreto() {
+		VulnerableClass vc = new VulnerableClass();
+		String FILENAME = "TesteNome.txt";
+		
+		//String input = "H";
+	    //InputStream in = new ByteArrayInputStream(input.getBytes());
+	    //System.setIn(in);
+
+	    vc.vulnerableMethod(FILENAME);
 	}
 
 }
