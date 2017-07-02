@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
-Test set: P2EXE4.e4.VulnerableClassTest
+Test set: P2EXE4.e4.SecureClassTest
 -------------------------------------------------------------------------------
-Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.12 sec
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.231 sec

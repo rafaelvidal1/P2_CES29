@@ -8,72 +8,71 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class vulnerableClass {
-	public String vulnerableMethod(String FILENAME,String in){ //Método principal
-
+public class SecureClass {
+	public void secureMethod(String FILENAME){
 		Pattern pattern = Pattern.compile("[^A-Za-z0-9._]");
 		Matcher matcher = pattern.matcher(FILENAME);
-
 		if(matcher.find()){
-			return "O nome do arquivo contem caracteres problematicos, por favor, mude o nome.";
+			System.out.print("O nome do arquivo contem caracteres problematicos, por favor, mude o nome.");
+			return;
+		}	
+		File file = new File(FILENAME);
+		if(!file.exists()){
+			System.out.print("O arquivo nao existe.");
+			return;
 		}
-
-		String opr=in;
-
-		if(opr==null){
-			return "Problema com o input";
+		Scanner console = new Scanner(System.in);
+		System.out.print("Digite a operacao desejada para realizar no arquivo <R para ler um arquivo, W para escrever em um arquivo>? ");
+		String opr=null;
+		try{
+			opr = console.next();
+		}catch(Exception e){
+			System.out.print("Problema na leitura do buffer.");
+			return;
 		}
-
 		switch (opr){
-
 		case "R":
 			BufferedReader br = null;
 			FileReader fr = null;
-
 			try {
-
 				fr = new FileReader(FILENAME);
 				br = new BufferedReader(fr);
-
 				String sCurrentLine;
-
 				br = new BufferedReader(new FileReader(FILENAME));
-
 				while ((sCurrentLine = br.readLine()) != null) {
-					System.out.println(sCurrentLine);
+					System.out.print(sCurrentLine);
 				}
-
 			} catch (IOException e) {
-
 				e.printStackTrace();
-
 			}
+			break;
 		case "W": 
 			BufferedWriter buffWrite;
-
 			try {
 				buffWrite = new BufferedWriter(new FileWriter(FILENAME));
 				String linha = "";
-				System.out.println("Escreva algo: ");
-				linha = "Linha teste";
+				System.out.print("Escreva algo: ");
+				linha = console.next();
+				if(linha.length() > 200){
+					System.out.print("String fora dos limites.");
+					return;
+				}
 				buffWrite.append(linha + "\n");
-				System.out.println(buffWrite.toString());
 				buffWrite.close();
-
 			}catch (IOException e) {
 				e.printStackTrace();
 			}
-		case "E":
 			break;
 		default:
-			return "Digite uma opcao valida!";
+			System.out.print("Opcao invalida!");
+			return;
 		}
-		return null;
+		console.close();
 	}
-
 }
