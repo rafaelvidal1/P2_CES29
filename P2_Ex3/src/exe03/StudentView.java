@@ -1,6 +1,6 @@
 package exe03;
 
-public class StudentView {
+public class StudentView implements IView{
 	public void printStudentDetails(String studentName, String studentRollNo) {
 		System.out.println("Student: ");
 		System.out.println("Name: " + studentName);
