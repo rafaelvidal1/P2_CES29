@@ -1,6 +1,6 @@
 package exe03;
 
-public class StudentController {
+public class StudentController implements IController<Student> {
 	private Student model;
 	private StudentView view;
 

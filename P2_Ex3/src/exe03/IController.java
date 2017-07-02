@@ -2,10 +2,10 @@ package exe03;
 
 public interface IController<T> {
 	
-	private T model;
+	public T model;
 	private View _view;
 
-	public setController(T model, View view);
+	public void setController(T model, View view);
 
 	public void setName(String name);
 
@@ -15,7 +15,7 @@ public interface IController<T> {
 
 	public String getRollNo();
 
-	public void updateView() {
+	public default void updateView() {
 		_view.printDetails(model.getName(), model.getRollNo());
 	}
 	

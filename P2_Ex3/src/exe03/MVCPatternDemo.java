@@ -14,7 +14,7 @@ public class MVCPatternDemo {
 		//Teacher modelT = retrieveTeacherFromDatabase();
 		//TeacherView viewT = new TeacherView();
 		
-		//controller = Class.forName("Teacher").newInstance();
+		//IController<Teacher> teacherController = factory.getController(Teacher.class);
 		
 		StudentController controller = new StudentController(model, view);
 

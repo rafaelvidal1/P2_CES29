@@ -1,2 +1,2 @@
-Testes\Teste_Principal.class
-exe2\VulnerableClass.class
+exe2\SecureClass.class
+Testes\SecureClassTest.class
