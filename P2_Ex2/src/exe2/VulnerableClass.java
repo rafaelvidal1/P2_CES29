@@ -24,19 +24,30 @@ public class VulnerableClass {
 			return;
 		}
 		
+		Scanner console = new Scanner(System.in);
+		
 		while (true) {
-			Scanner console = new Scanner(System.in);
+			
 		    System.out.print("Digite a operacao desejada para realizar no arquivo <R para ler um arquivo, "
-		    		+ "W para escrever em um arquivo>? ");
+		    		+ "W para escrever em um arquivo, E para sair>? ");
 			
-		    String opr= console.next();
-			
+		    String opr=null;
+		    try{
+		    	opr = console.next();
+		    }catch(Exception e){
+		    	System.out.println(e.getMessage());
+		    }
+		    
+		    if(opr == null){
+		    	return;
+		    }
+		    
 		    switch (opr){
 		    
 		    case "R":
 		    	BufferedReader br = null;
 				FileReader fr = null;
-
+				
 				try {
 
 					fr = new FileReader(FILENAME);
@@ -54,22 +65,7 @@ public class VulnerableClass {
 
 					e.printStackTrace();
 
-				} finally {
-
-					try {
-
-						if (br != null)
-							br.close();
-
-						if (fr != null)
-							fr.close();
-
-					} catch (IOException ex) {
-
-						ex.printStackTrace();
-
-					}
-				}	
+				}
 				break;
 		    case "W": 
 		    	BufferedWriter buffWrite;
@@ -86,6 +82,9 @@ public class VulnerableClass {
 					e.printStackTrace();
 				}
 				break;
+		    case "E":
+		    	console.close();
+		    	return;
 			default:
 				System.out.println("Digite uma opcao valida!\n");
 				break;

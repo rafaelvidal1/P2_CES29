@@ -25,7 +25,6 @@ public class Teste_Principal {
 		
 		assertEquals("O nome do arquivo contem caracteres problematicos, por favor, mude o nome.",outContent.toString() );
 		
-		
 	}
 	
 	@Test
@@ -33,11 +32,12 @@ public class Teste_Principal {
 		VulnerableClass vc = new VulnerableClass();
 		String FILENAME = "TesteNome.txt";
 		
-		//String input = "H";
-	    //InputStream in = new ByteArrayInputStream(input.getBytes());
-	    //System.setIn(in);
+		String input = "h";
+	    InputStream in = new ByteArrayInputStream(input.getBytes());
+	    System.setIn(in);
 
 	    vc.vulnerableMethod(FILENAME);
+	    
 	}
 
 }
