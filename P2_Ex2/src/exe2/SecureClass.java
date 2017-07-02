@@ -78,7 +78,7 @@ public class SecureClass {
 			try {
 				buffWrite = new BufferedWriter(new FileWriter(FILENAME));
 				String linha = "";
-				System.out.println("Escreva algo: ");
+				System.out.print("Escreva algo: ");
 				linha = console.next();
 				
 				if(linha.length() > 200){
@@ -104,16 +104,8 @@ public class SecureClass {
 		SecureClass vc = new SecureClass();
 		String FILENAME = "TesteNome.txt";
 		
-		
-		String input = " h ";
-	    InputStream in = new ByteArrayInputStream(input.getBytes());
-	    System.setIn(in);
 	    vc.secureMethod(FILENAME);
 	    
-	    ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-	    System.setOut(new PrintStream(outContent,true));
-	    
-	    System.out.println(outContent.toString());
 	}
 
 }

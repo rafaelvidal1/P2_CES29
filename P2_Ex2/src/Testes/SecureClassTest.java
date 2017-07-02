@@ -4,6 +4,9 @@ import static org.junit.Assert.*;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintStream;
 
@@ -60,6 +63,23 @@ public class SecureClassTest {
 	    vc.secureMethod(FILENAME);
 	    
 	    assertEquals("O arquivo nao existe.", outContent.toString());
+	    
+	}
+	
+	@Test
+	public void EscritaNoArquivo() {
+		SecureClass vc = new SecureClass();
+		String FILENAME = "TesteNome.txt";
+		
+		String input = " W\n ";
+		String line = "teste";
+		
+	    InputStream in = new ByteArrayInputStream((input + line + "\n").getBytes());
+	    System.setIn(in);
+		
+	    vc.secureMethod(FILENAME);
+	    
+	    assertEquals("Digite a operacao desejada para realizar no arquivo <R para ler um arquivo, W para escrever em um arquivo>? Escreva algo: ", outContent.toString());
 	    
 	}
 
