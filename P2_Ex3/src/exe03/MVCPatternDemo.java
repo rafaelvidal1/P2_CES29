@@ -1,28 +1,20 @@
 package exe03;
 
 public class MVCPatternDemo {
-	public static void main(String[] args) {
-		
-		//Object controller = null;
-		
+	public static void main(String[] args) throws NoSuchMethodException {
+				
 		// fetch student record based on his roll no from the database
-		Student model = retriveStudentFromDatabase();
-
+		Student modelS = retriveStudentFromDatabase();
+		Teacher modelT = retriveTeacherFromDatabase();
+		
 		// Create a view : to write student details on console
-		StudentView view = new StudentView();
 		
-		//Teacher modelT = retrieveTeacherFromDatabase();
-		//TeacherView viewT = new TeacherView();
-		
-		//IController<Teacher> teacherController = factory.getController(Teacher.class);
-		
-		StudentController controller = new StudentController(model, view);
+		ControllerFactory controller =  ControllerFactory.getController(modelS);
 
 		controller.updateView();
 
-		// update model data
-		controller.setStudentName("John");
-
+		controller =  ControllerFactory.getController(modelT);
+		
 		controller.updateView();
 	}
 
@@ -31,6 +23,13 @@ public class MVCPatternDemo {
 		student.setName("Robert");
 		student.setRollNo("10");
 		return student;
+	}
+	
+	private static Teacher retriveTeacherFromDatabase(){
+		Teacher teacher = new Teacher();
+		teacher.setName("Sam");
+		teacher.setRollNo("20");
+		return teacher;
 	}
 
 }
